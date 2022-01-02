@@ -1,12 +1,12 @@
 const result = document.querySelector('.result');
 const numbers = document.querySelector('.numbers');
 const btns = document.querySelectorAll('.btn');
-
+result.textContent.slice(0, 10);
 
 let res = '';
 let numer;
 let once;
-
+let trig;
 
 for (let index = 1; index < 11; index++) {
     numer = document.createElement('div');
@@ -19,8 +19,12 @@ for (let index = 1; index < 11; index++) {
     numer.onclick = clickedNr;
 }
 
-
 function clickedNr(e) {
+    console.log(trig);
+    if (!trig) {
+        result.textContent = '';
+        trig = true;
+    }
     if (once) {
         result.textContent += e.target.textContent
         localStorage.setItem('num1', result.textContent);
@@ -29,6 +33,7 @@ function clickedNr(e) {
         localStorage.setItem('num2', result.textContent);
     }
 }
+
 
 const dot = document.createElement('div');
 dot.classList.add('number');
@@ -49,9 +54,10 @@ equal.onclick = () => {
     if (symbol === '-') res = num1 - num2;
     if (symbol === '*') res = num1 * num2;
     if (symbol === '/') res = num1 / num2;
-    result.textContent = res
+    result.textContent = res.to.trimEnd();
     localStorage.clear()
     once = true;
+    trig = false;
 }
 
 for (const btn of btns) {

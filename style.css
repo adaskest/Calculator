@@ -26,10 +26,9 @@
 }
 
 .result {
-    width: 300px;
+    width: 100%;
     font-family: 'Genos', sans-serif;
     margin: 0 10px;
-    padding: 0 20px;
     overflow: hidden;
 }
 
