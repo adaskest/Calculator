@@ -19,17 +19,15 @@ for (let index = 1; index < 11; index++) {
     numer.onclick = clickedNr;
 }
 
+
 function clickedNr(e) {
     if (once) {
         result.textContent += e.target.textContent
         localStorage.setItem('num1', result.textContent);
-        console.log(result.textContent);
     } else {
         result.textContent += e.target.textContent
         localStorage.setItem('num2', result.textContent);
-        console.log(result.textContent);
     }
-
 }
 
 const dot = document.createElement('div');
@@ -41,6 +39,7 @@ const equal = document.createElement('div');
 equal.classList.add('number');
 equal.textContent = '='
 numbers.appendChild(equal);
+
 equal.onclick = () => {
     let res = 0;
     const num1 = Number(localStorage.getItem('num1'))
