@@ -54,7 +54,7 @@ equal.onclick = () => {
     if (symbol === '-') res = num1 - num2;
     if (symbol === '*') res = num1 * num2;
     if (symbol === '/') res = num1 / num2;
-    result.textContent = res.to.trimEnd();
+    result.textContent = res.toString().slice(0, 10)
     localStorage.clear()
     once = true;
     trig = false;
