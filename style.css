@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.calcul {
+    height: 600px;
+    width: 400px;
+    border: 1px solid black;
+    margin: 50px auto;
+    border-radius: 20px;
+    background-color: rgb(48, 46, 46);
+}
+
+.screen {
+    width: 380px;
+    height: 100px;
+    background-color: rgb(210, 210, 210);
+    margin: 0 auto;
+    margin-top: 55px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 75px;
+}
+
+.result {
+    width: 300px;
+    font-family: 'Genos', sans-serif;
+    margin: 0 10px;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.calcu {
+    width: 400px;
+    display: flex;
+    margin: 20px auto;
+}
+
+.numbers {
+    margin-left: 10px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.symbols {
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 10px;
+}
+
+.number {
+    height: 84px;
+    width: 84px;
+    font-size: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 246, 246);
+    border-radius: 20px;
+    margin: 3px;
+    cursor: pointer;
+}
