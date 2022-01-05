@@ -1,6 +1,7 @@
 const result = document.querySelector('.result');
 const numbers = document.querySelector('.numbers');
 const btns = document.querySelectorAll('.btn');
+const plusMinus = document.querySelector(".plusMinus");
 localStorage.setItem('num1', '');
 localStorage.setItem('num2', '');
 localStorage.setItem('symbol', '');
@@ -19,7 +20,7 @@ let mathRes;
 let count = true;
 let dotClicked = true;
 
-//  Number buttons
+// Create number buttons
 
 for (let index = 1; index < 11; index++) {
     number = document.createElement('div');
@@ -32,7 +33,7 @@ for (let index = 1; index < 11; index++) {
     number.onclick = clickedNr;
 }
 
-// Dot button
+// Create dot button and onclick event
 
 const dot = document.createElement('div');
 dot.classList.add('number');
@@ -45,7 +46,7 @@ dot.onclick = (e) => {
     }
 }
 
-// Equal button
+// Create equal button
 
 const equal = document.createElement('div');
 equal.classList.add('number');
@@ -79,6 +80,7 @@ function clickedNr(e) {
 
 for (const btn of btns) {
     btn.onclick = (e) => {
+        console.log(e);
         if (!firstSecondNr) hiddenEqualFunc();
         localStorage.setItem('symbol', e.target.textContent);
         result.textContent = '';

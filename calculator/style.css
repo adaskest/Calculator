@@ -3,8 +3,16 @@
     padding: 0;
 }
 
+.d-flex {
+    display: flex;
+}
+
+.m-0-15 {
+    margin: 0 15px;
+}
+
 .calcul {
-    height: 600px;
+    height: fit-content;
     width: 400px;
     border: 1px solid black;
     margin: 50px auto;
@@ -34,23 +42,25 @@
 }
 
 .calcu {
-    width: 400px;
+    height: 460px;
+    width: 370px;
     display: flex;
     margin: 20px auto;
 }
 
 .numbers {
-    margin-left: 10px;
-    height: 400px;
+    height: 360px;
+    width: 270px;
     display: flex;
     flex-wrap: wrap;
 }
 
 .symbols {
-    height: 400px;
+    height: 360px;
+    width: 90px;
     display: flex;
     flex-wrap: wrap;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .number {
