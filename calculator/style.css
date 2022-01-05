@@ -26,10 +26,11 @@
 }
 
 .result {
-    width: 100%;
-    font-family: 'Digital-7', monospace;
+    width: 360px;
+    font-family: 'Digital-7 Mono';
     margin: 0 10px;
     overflow: hidden;
+    text-align: right;
 }
 
 .calcu {

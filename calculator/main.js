@@ -1,6 +1,10 @@
 const result = document.querySelector('.result');
 const numbers = document.querySelector('.numbers');
 const btns = document.querySelectorAll('.btn');
+localStorage.setItem('num1', '');
+localStorage.setItem('num2', '');
+localStorage.setItem('symbol', '');
+localStorage.setItem('result', '');
 
 let number;
 let symbol;
@@ -8,6 +12,9 @@ let num1;
 let num2;
 let firstSecondNr;
 let resTextNone;
+let res = 0;
+let resNumOne = '';
+let resNumTwo = '';
 let mathRes;
 let count = true;
 let dotClicked = true;
@@ -32,13 +39,13 @@ dot.classList.add('number');
 dot.textContent = '.'
 numbers.appendChild(dot);
 dot.onclick = (e) => {
-        if (dotClicked) {
-            clickedNr(e);
-            dotClicked = false;
-            console.log('a');
-        }
+    if (dotClicked) {
+        clickedNr(e);
+        dotClicked = false;
     }
-    // Equal button
+}
+
+// Equal button
 
 const equal = document.createElement('div');
 equal.classList.add('number');
@@ -53,20 +60,47 @@ function clickedNr(e) {
         resTextNone = true;
     }
     if (firstSecondNr) {
-        result.textContent += e.target.textContent
+        resNumOne += e.target.textContent
+        result.textContent = resNumOne.toString().slice(0, 10)
         localStorage.setItem('num1', result.textContent);
         localStorage.setItem('result', '');
-        count = true;
+        resNumTwo = '';
     } else {
-        result.textContent += e.target.textContent
+        resNumTwo += e.target.textContent;
+        result.textContent = resNumTwo.toString().slice(0, 10);
         localStorage.setItem('num2', result.textContent);
+        resTextNone = false;
+        resNumOne = '';
+    }
+}
+
+//  Function for math symbol button clicked
+
+
+for (const btn of btns) {
+    btn.onclick = (e) => {
+        if (!firstSecondNr) hiddenEqualFunc();
+        localStorage.setItem('symbol', e.target.textContent);
+        result.textContent = '';
+        firstSecondNr = false;
+        dotClicked = true;
+        resNumTwo = '';
     }
 }
 
 //  Function for equal button clicked
 
-equal.onclick = () => {
-    let res = 0;
+equal.onclick = equalFunc;
+
+function equalFunc() {
+    if (!firstSecondNr) {
+        hiddenEqualFunc()
+        res = localStorage.getItem('result')
+        result.textContent = res.toString().slice(0, 10);
+    }
+}
+
+function hiddenEqualFunc() {
     num1 = Number(localStorage.getItem('num1'))
     symbol = localStorage.getItem('symbol')
     num2 = Number(localStorage.getItem('num2'))
@@ -76,9 +110,6 @@ equal.onclick = () => {
         if (symbol === '*') res = num1 * num2;
         if (symbol === '/') res = num1 / num2;
         localStorage.setItem('result', res)
-        console.log();
-        result.textContent = res.toString().slice(0, 10);
-        firstSecondNr = true;
         resTextNone = false;
         count = false;
     } else {
@@ -96,17 +127,5 @@ function moreMath() {
     if (symbol === '/') res = mathRes / num2;
     localStorage.setItem('result', res)
     result.textContent = res.toString().slice(0, 10);
-    firstSecondNr = true;
     resTextNone = false;
-}
-
-//  Function for math symbol button clicked
-
-for (const btn of btns) {
-    btn.onclick = (e) => {
-        localStorage.setItem('symbol', e.target.textContent);
-        result.textContent = '';
-        firstSecondNr = false;
-        dotClicked = true;
-    }
 }
